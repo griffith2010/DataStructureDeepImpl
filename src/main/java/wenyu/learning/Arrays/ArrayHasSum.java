@@ -1,14 +1,18 @@
 package wenyu.learning.Arrays;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 /*
  * To find sub-items in a array whose sum is given integer.
  * 		1. find two numbers in array with specified sum. (Allow sorting array)
- * 			Logic: first sort array, and two points.
+ * 			Logic: first sort array, and two points. O(nlogn)
  * 		2. find two numbers in array with specified sum. (Cannot change original array)
- * 			Logic: Loop array and use binary search to find the another number. like 3 and -3
+ * 			Logic: Loop array and use binary search to find the another number. like 3 and -3 O(nlogn)
+ * 		2. find two numbers in array with specified sum (Use set) 
+ * 			Logic: Loop array and add item into set O(n) + O(n) space
  * 		3. find three numbers in array with specified sum.
  * 			Logic: Loop array and use above methods to find another two numbers
  */
@@ -75,6 +79,26 @@ public class ArrayHasSum {
 		return found;
 	}
 	
+	public static boolean findPairWithSumWithSet(final int[] numbers, int sum, int excludeIndex) {
+		Set<Integer> set = new HashSet<Integer>();
+		boolean found = false;
+		
+		for(int i=0; i<numbers.length; i++) {
+			if(i == excludeIndex) {
+				continue;
+			}
+			if(set.contains(sum-numbers[i])) {
+				System.out.println("Find: " + numbers[i] + ", " + (sum-numbers[i]));
+				found = true;
+				break;
+			} else {
+				set.add(numbers[i]);
+			}
+		}
+		
+		return found;
+	}
+	
 	public static boolean findTripleWithSum(final int numbers[], int sum) {
 		boolean found = false;
 		if (numbers.length < 3)
@@ -128,6 +152,13 @@ public class ArrayHasSum {
 		} else {
 			System.out.println("Hasn't pair items in array with this sum...");
 		}
+		
+		if(findPairWithSumWithSet(numbers.clone(), 10, -1)) {
+			System.out.println("Has pair items in array with this sum...");
+		} else {
+			System.out.println("Hasn't pair items in array with this sum...");
+		}
+		
 		
 		if(findTripleWithSum(numbers.clone(), 10)) {
 			System.out.println("Has triple items in array with this sum is 10...");
