@@ -78,17 +78,17 @@ public class BinaryTreeTraversalToLink {
 	
 	public static void main(String[] args) {
 		BinaryTreeNode<Integer> root = BSTUtils.genIntegerBST(10);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		System.out.println("===========================");
 		root = transfer_inorder(root);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 
 		System.out.println("==================================================================");
 
 		root = BSTUtils.genIntegerBST(10);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		System.out.println("===========================");
 		root = transfer_preorder(root);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 	}
 }

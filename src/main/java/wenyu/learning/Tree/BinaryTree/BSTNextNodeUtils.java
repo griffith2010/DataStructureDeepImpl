@@ -141,7 +141,7 @@ public class BSTNextNodeUtils {
 		
 		
 		BinaryTreeNode<Integer> root = BSTUtils.genFromSortedArr(values, 0, values.length-1);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		
 		Scanner scanner = new Scanner(System.in);
 		PrintStream out = System.out;

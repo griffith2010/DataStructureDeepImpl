@@ -20,7 +20,7 @@ public class TreeHeightCalculator {
 	
 	public static void main(String[] args) {
 		BinaryTreeNode<Integer> root = BSTUtils.genIntegerBST(10);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		System.out.println("======================================================================");
 		System.out.println("Tree height: " + calculateTreeHeight(root));
 	}

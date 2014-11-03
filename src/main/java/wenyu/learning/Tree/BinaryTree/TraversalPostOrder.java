@@ -3,21 +3,26 @@ package wenyu.learning.Tree.BinaryTree;
 import java.util.Stack;
 
 public class TraversalPostOrder {
-	public static <E> void traversalWithRecursion(BinaryTreeNode<E> node) {
+	public static <E> void traversalWithRecursion(BinaryTreeNode<E> node, TraversalOperation op) {
 		if(node == null) {
 			return;
 		}
 		
 		if(node.left!=null) {
-			traversalWithRecursion(node.left);
+			traversalWithRecursion(node.left, op);
 		}
 		if(node.right!=null) {
-			traversalWithRecursion(node.right);
+			traversalWithRecursion(node.right, op);
 		}
-		System.out.print(node.value + " ");
+		
+		if(op == null) {
+			System.out.print(node.value + " ");
+		} else {
+			op.operate(node);
+		}
 	}
 	
-	public static <E> void traversalWithoutRecursion(BinaryTreeNode<E> root) {
+	public static <E> void traversalWithoutRecursion(BinaryTreeNode<E> root, TraversalOperation op) {
 		if(root == null) {
 			return;
 		}
@@ -37,7 +42,13 @@ public class TraversalPostOrder {
 				node = stack.peek();
 				if(node.right==null || node.right==lastVisited) {
 					node = stack.pop();
-					System.out.print(node.value + " ");
+
+					if(op == null) {
+						System.out.print(node.value + " ");
+					} else {
+						op.operate(node);
+					}
+					
 					if(lastVisited!=null && node.right == lastVisited) {
 						lastVisited = node;
 						stack.push(null);
@@ -110,13 +121,13 @@ public class TraversalPostOrder {
 	
 	private void demoEntry() {
 		BinaryTreeNode<Integer> root = BSTUtils.genIntegerBST(30);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		
 		System.out.println("========================");
-		traversalWithRecursion(root);
+		traversalWithRecursion(root, null);
 		System.out.println();
 		System.out.println("========================");
-		traversalWithoutRecursion(root);
+		traversalWithoutRecursion(root, null);
 		System.out.println();
 		System.out.println("========================");
 		MorrisPostOrder(root);

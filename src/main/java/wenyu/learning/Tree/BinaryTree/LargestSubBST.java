@@ -43,7 +43,7 @@ public class LargestSubBST {
 	public static void main(String[] args) {
 		int treeNodeCount = 100;
 		BinaryTreeNode<Integer> root = BSTUtils.genMostBalancedIntegerBST(treeNodeCount);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		
 		System.out.println("Largest count is " + LargestBST(root));
 	}

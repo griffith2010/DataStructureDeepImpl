@@ -43,7 +43,7 @@ public class GetPathWithSum {
 		root1.right = new BinaryTreeNode<Integer>(12);
 		root1.left.left = new BinaryTreeNode<Integer>(4);
 		root1.left.right = new BinaryTreeNode<Integer>(7);
-		TraversalBFS.traversalWithLine(root1);
+		TraversalBFS.traversalWithLine(root1, null);
 		System.out.println("=====================================");
 		
 		getPathWithSum(root1, 30);

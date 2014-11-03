@@ -96,7 +96,7 @@ public class GetPairedSumFromBST {
 	
 	public static void main(String[] args) {
 		BinaryTreeNode<Integer> root = BSTUtils.genMostBalancedIntegerBST(10);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		
 		while(true) {
 			System.out.println("Input a sum: ");

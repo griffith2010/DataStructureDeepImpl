@@ -34,7 +34,7 @@ public class BSTSumWithinRange {
 	
 	public static void main(String[] args) {
 		BinaryTreeNode<Integer> root = BSTUtils.genMostBalancedIntegerBST(5);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		int min = 33;
 		int max = 66;
 		int sum = 0;

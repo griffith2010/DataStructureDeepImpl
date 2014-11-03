@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class TraversalBFS {
 	
-	public static <E> void traversalBFS(BinaryTreeNode<E> root) {
+	public static <E> void traversalBFS(BinaryTreeNode<E> root, TraversalOperation op) {
 		if(root == null) {
 			return;
 		}
@@ -15,7 +15,11 @@ public class TraversalBFS {
 		queue.offer(root);
 		while(!queue.isEmpty()) {
 			BinaryTreeNode<E> node = queue.poll();
-			System.out.print(node.value + " ");
+			if(op == null) {
+				System.out.print(node.value + " ");
+			} else {
+				op.operate(node);
+			}
 			
 			if(node.left != null) {
 				queue.offer(node.left);
@@ -28,7 +32,7 @@ public class TraversalBFS {
 	}
 	
 	// Print BFS with lines
-	public static <E> void traversalWithLine(BinaryTreeNode<E> root) {
+	public static <E> void traversalWithLine(BinaryTreeNode<E> root, TraversalOperation op) {
 		if(root == null) {
 			return;
 		}
@@ -39,7 +43,11 @@ public class TraversalBFS {
 		
 		while(!queue.isEmpty()) {
 			BinaryTreeNode<E> node = queue.poll();
-			System.out.print(node.value + " ");
+			if(op == null) {
+				System.out.print(node.value + " ");
+			} else {
+				op.operate(node);
+			}
 			
 			if(node.left != null) {
 				queue.offer(node.left);
@@ -52,7 +60,9 @@ public class TraversalBFS {
 
 			currentLineNodeCount--;
 			if(currentLineNodeCount==0) {
-				System.out.println();
+				if(op == null) {
+					System.out.println();
+				}
 				currentLineNodeCount = nextLineNodeCount;
 				nextLineNodeCount = 0;
 			}
@@ -60,7 +70,7 @@ public class TraversalBFS {
 	}
 	
 	// Print BFS with lines
-	public static <E> void traversalWithLineZigZag(BinaryTreeNode<E> root) {
+	public static <E> void traversalWithLineZigZag(BinaryTreeNode<E> root, TraversalOperation op) {
 		if(root == null) {
 			return;
 		}
@@ -74,7 +84,11 @@ public class TraversalBFS {
 		while(!stackEven.isEmpty() || !stackOdd.isEmpty()) {
 			if(lineNo%2 == 0) {
 				BinaryTreeNode<E> node = stackEven.pop();
-				System.out.print(node.value + " ");
+				if(op == null) {
+					System.out.print(node.value + " ");
+				} else {
+					op.operate(node);
+				}
 				if(node.left != null) {
 					stackOdd.push(node.left);
 					nextLineNodeCount++;
@@ -85,7 +99,11 @@ public class TraversalBFS {
 				}
 			} else {
 				BinaryTreeNode<E> node = stackOdd.pop();
-				System.out.print(node.value + " ");
+				if(op == null) {
+					System.out.print(node.value + " ");
+				} else {
+					op.operate(node);
+				}
 				if(node.right != null) {
 					stackEven.push(node.right);
 					nextLineNodeCount++;
@@ -98,7 +116,9 @@ public class TraversalBFS {
 
 			currentLineNodeCount--;
 			if(currentLineNodeCount==0) {
-				System.out.println();
+				if(op == null) {
+					System.out.println();
+				}
 				currentLineNodeCount = nextLineNodeCount;
 				nextLineNodeCount = 0;
 				lineNo++;
@@ -108,10 +128,10 @@ public class TraversalBFS {
 	
 	public static void main(String[] args) {
 		BinaryTreeNode<Integer> root = BSTUtils.genIntegerBST(10);
-		traversalWithLine(root);
+		traversalWithLine(root, null);
 		System.out.println("=============================================");
-		traversalBFS(root);
+		traversalBFS(root, null);
 		System.out.println("=============================================");
-		traversalWithLineZigZag(root);
+		traversalWithLineZigZag(root, null);
 	}
 }

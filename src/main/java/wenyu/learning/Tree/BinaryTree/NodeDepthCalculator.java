@@ -102,7 +102,7 @@ public class NodeDepthCalculator {
 		root.right.left = child2;
 		root.right.right = new BinaryTreeNode<Integer>(6);
 		root.right.right.left = child3;
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		System.out.println("===================================================================");
 		Map<BinaryTreeNode<Integer>, Integer> depths = calculateDepthForAllNodes(root);
 		Iterator<Entry<BinaryTreeNode<Integer>, Integer>> it = depths.entrySet().iterator();

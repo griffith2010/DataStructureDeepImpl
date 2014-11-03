@@ -4,21 +4,25 @@ import java.util.Stack;
 
 public class TraversalInOrder {
 
-	public static <E> void traversalWithRecursion(BinaryTreeNode<E> node) {
+	public static <E> void traversalWithRecursion(BinaryTreeNode<E> node, TraversalOperation op) {
 		if(node == null) {
 			return;
 		}
 		
 		if(node.left!=null) {
-			traversalWithRecursion(node.left);
+			traversalWithRecursion(node.left, op);
 		}
-		System.out.print(node.value + " ");
+		if(op == null) {
+			System.out.print(node.value + " ");
+		} else {
+			op.operate(node);
+		}
 		if(node.right!=null) {
-			traversalWithRecursion(node.right);
+			traversalWithRecursion(node.right, op);
 		}
 	}
 	
-	public static <E> void traversalWithoutRecursion(BinaryTreeNode<E> root) {
+	public static <E> void traversalWithoutRecursion(BinaryTreeNode<E> root, TraversalOperation op) {
 		if(root == null) {
 			return;
 		}
@@ -35,7 +39,11 @@ public class TraversalInOrder {
 			stack.pop(); //Pop out null peek value
 			if(!stack.isEmpty()) {
 				node = stack.pop();
-				System.out.print(node.value + " ");
+				if(op == null) {
+					System.out.print(node.value + " ");
+				} else {
+					op.operate(node);
+				}
 				stack.push(node.right);
 			}
 		}
@@ -83,13 +91,13 @@ public class TraversalInOrder {
 	
 	private void demoEntry() {
 		BinaryTreeNode<Integer> root = BSTUtils.genIntegerBST(8);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		
 		System.out.println("========================");
-		traversalWithRecursion(root);
+		traversalWithRecursion(root, null);
 		System.out.println();
 		System.out.println("========================");
-		traversalWithoutRecursion(root);
+		traversalWithoutRecursion(root, null);
 		System.out.println();
 		System.out.println("========================");
 		MorrisInOrder(root);

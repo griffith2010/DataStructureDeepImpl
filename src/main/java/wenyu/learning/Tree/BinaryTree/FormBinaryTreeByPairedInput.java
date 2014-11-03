@@ -70,7 +70,7 @@ public class FormBinaryTreeByPairedInput {
 		BinaryTreeNode<Integer> root = formTree(nodes);
 		System.out.println("Root is: " + root.value + "\n");
 		System.out.println("Tree is: ");
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 	}
 
 }

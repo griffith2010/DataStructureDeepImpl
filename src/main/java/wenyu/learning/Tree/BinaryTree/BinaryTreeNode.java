@@ -4,6 +4,7 @@ public class BinaryTreeNode<E> {
 	public E value;
 	public BinaryTreeNode<E> left;
 	public BinaryTreeNode<E> right;
+	public BinaryTreeNode<E> random; // used in BinaryTreeClone
 	
 	public BinaryTreeNode() {}
 	public BinaryTreeNode(E value) {

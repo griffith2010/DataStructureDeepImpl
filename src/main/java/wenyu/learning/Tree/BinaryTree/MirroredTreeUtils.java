@@ -46,14 +46,14 @@ public class MirroredTreeUtils {
 		}
 		Arrays.sort(values);
 		BinaryTreeNode<Integer> root = BSTUtils.genFromSortedArr(values, 0, values.length-1);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		
 		//=======================================================================
 		System.out.println("======================================================");
 		
 		BinaryTreeNode<Integer> mirroredTree = new BinaryTreeNode<Integer>();
 		generateMirroredTree(root, mirroredTree);
-		TraversalBFS.traversalWithLine(mirroredTree);
+		TraversalBFS.traversalWithLine(mirroredTree, null);
 
 		//=======================================================================
 		System.out.println("======================================================");

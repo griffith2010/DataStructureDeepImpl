@@ -88,7 +88,7 @@ public class PrintTreeNodeVertically {
 	
 	public static void main(String[] args) {
 		BinaryTreeNode<Integer> root = BSTUtils.genMostBalancedIntegerBST(8);
-		TraversalBFS.traversalWithLine(root);
+		TraversalBFS.traversalWithLine(root, null);
 		
 		System.out.println("===========================");
 		printVertically(root);
