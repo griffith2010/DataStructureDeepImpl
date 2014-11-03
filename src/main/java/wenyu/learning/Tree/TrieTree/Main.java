@@ -6,7 +6,7 @@ public class Main {
 
 	public static void TrieStrTreeDemo() {
 		TrieTreeAPI<Character> api = new TrieTreeAPI<Character>() {
-			@Override 
+			@Override
 			public Character[] toArray(Object s) {
 				String str = s.toString();
 				Character[] cArray = new Character[str.length()];
