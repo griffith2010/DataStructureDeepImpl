@@ -1,4 +1,4 @@
-package wenyu.learning.Arrays;
+package wenyu.learning.BinarySearch;
 
 public class FindOccurrences {
 
