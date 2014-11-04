@@ -1,15 +1,25 @@
 package wenyu.learning.Arrays;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /*
+ * Problem 1:
  * Given an array where all numbers but one occurs in pairs, 
  * suggest all ways to find the unique number. 
  * What if the array was sorted? (Code)
+ * 
+ * Problem 2:
+ * In array only 1 element is unique rest are 3 times. Find it.
  */
 public class FindDuplicate {
 
 	public static void findFromUnsortedArr(int[] arr) {
+		/*
+		 * Two duplicate
+		 */
 		if(arr.length%2==0) {
 			return;
 		}
@@ -23,6 +33,24 @@ public class FindDuplicate {
 			unique ^= arr[i];
 		}
 		
+		System.out.println("Unique number is " + unique);
+	}
+	
+	public static void findFromUnsortedArrDuplicateThree(int[] arr) {
+		int arrSum = 0;
+		Set<Integer> set = new HashSet<Integer>();
+		for(int item : arr) {
+			set.add(item);
+			arrSum += item;
+		}
+		
+		int sum = 0;
+		Iterator<Integer> it = set.iterator();
+		while(it.hasNext()) {
+			sum += it.next();
+		}
+		
+		int unique = (sum*3-arrSum)/2;
 		System.out.println("Unique number is " + unique);
 	}
 	
@@ -67,5 +95,9 @@ public class FindDuplicate {
 		int[] array = {1,2,8,2,8,6,6,5,10,1,10};
 		findFromUnsortedArr(array);
 		findFromSortedArr(array);
+		
+		
+		array = new int[] {1,1,1,2,2,2,3,3,3,4,5,5,5,6,6,6,7,7,7,8,8,8,9,9,9};
+		findFromUnsortedArrDuplicateThree(array);
 	}
 }
