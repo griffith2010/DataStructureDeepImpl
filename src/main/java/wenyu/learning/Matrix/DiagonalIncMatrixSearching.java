@@ -1,5 +1,9 @@
 package wenyu.learning.Matrix;
 
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.PriorityQueue;
+
 import wenyu.learning.Heap.MyIndexMinHeap;
 
 /**
@@ -34,6 +38,9 @@ public class DiagonalIncMatrixSearching {
 	}
 	
 	public static void printAsceding(int[][] matrix) {
+		/*
+		 * Time Complexity: O(N2LogN)
+		 */
 		MyIndexMinHeap<Integer> heap = new MyIndexMinHeap<Integer>(matrix.length);
 		int[] tmpIdx = new int[matrix.length];
 		for(int i=0;i<matrix.length;i++) {
@@ -55,11 +62,53 @@ public class DiagonalIncMatrixSearching {
 		System.out.println();
 	}
 	
+	public static void printAscedingWithoutIndexHeap(int[][] matrix) {
+		/*
+		 * Time Complexity: O(N2LogN)
+		 */
+		if(matrix==null || matrix.length==0 || matrix[0].length==0) {
+			return;
+		}
+		
+		class Structure {
+			int value;
+			int rowIdx;
+			int colIdx;
+			public Structure(int value, int ridx, int cidx) {
+				this.value= value;
+				this.rowIdx = ridx;
+				this.colIdx = cidx;
+			}
+		}
+		Comparator<Structure> comp = new Comparator<Structure>() {
+			public int compare(Structure s1, Structure s2) {
+				return s1.value - s2.value;
+			}
+		};
+		PriorityQueue<Structure> pq = new PriorityQueue<Structure>(matrix.length*matrix[0].length, comp);
+		for(int i=0; i<matrix.length; i++) {
+			pq.add(new Structure(matrix[i][0], i, 0));
+		}
+		
+		while(!pq.isEmpty()) {
+			Structure currMin = pq.poll();
+			int currValue = currMin.value;
+			int currRowIdx = currMin.rowIdx;
+			int currColIdx = currMin.colIdx;
+			System.out.print(currValue + " ");
+			if(currColIdx+1 < matrix[currRowIdx].length) {
+				pq.add(new Structure(matrix[currRowIdx][currColIdx+1], currRowIdx, currColIdx+1));
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		int[][] matrix = {{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
 		
 		find(matrix, 15);
 		
 		printAsceding(matrix);
+		
+		printAscedingWithoutIndexHeap(matrix);
 	}
 }
