@@ -3,6 +3,7 @@ package wenyu.learning.Strings;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -46,14 +47,21 @@ public class DuplicateFindingProblems {
 	 * are read, the first character appearing only once is ‘l’.
 	 */
 	private static Map<Character, Integer> map = new LinkedHashMap<Character, Integer>();
+	private static Set<Character> set = new LinkedHashSet<Character>();
 	public static void insertCharToStream(char ch) {
 		if(map.containsKey(ch)) {
 			map.put(ch, map.get(ch)+1);
+			if(set.contains(ch)) set.remove(ch);
 		} else {
 			map.put(ch, 1);
+			set.add(ch);
 		}
 	}
 	public static void findDuplicateInStream() {
+		if(!set.isEmpty()) {
+			System.out.println("Set The first character appears once is " + set.iterator().next());
+		}
+		
 		Iterator<Entry<Character, Integer>> it = map.entrySet().iterator();
 		while(it.hasNext()) {
 			Entry<Character, Integer> entry = it.next();
