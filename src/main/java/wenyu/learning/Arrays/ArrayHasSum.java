@@ -53,6 +53,7 @@ public class ArrayHasSum {
 	public static boolean findPairWithSumNoAllowSort(final int[] numbers, int sum, int excludeIndex) {
 		/*
 		 * If not allowed to change the original array
+		 * Using binary search
 		 * O(nlogn)
 		 */
 		

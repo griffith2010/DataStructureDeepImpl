@@ -1,11 +1,11 @@
 package wenyu.learning.Arrays;
 
 /*
- * Stock prices are stored in an array in the order of date. How do you get the
- * most profit from a sequence of stock prices?
- * For example, the most profit to be gained from the sequence of ordered stock
- * prices {9, 11, 5, 7, 16, 1, 4, 2} is 11, bought when the price was 5 and sold
- * when the price was 16.
+ * Given an array arr[] of integers, find out the difference between any two elements such that larger 
+ * element appears after the smaller number in arr[].
+ * Examples: If array is [2, 3, 10, 6, 4, 8, 1] then returned value should be 8 (Diff between 10 and 2). 
+ * 			 If array is [7, 9, 5, 6, 3, 2 ] then returned value should be 2 (Diff between 7 and 9)
+ * 
  * Logic:
  *   Solution1: O(n^2)
  *    1. loop every item in the array
@@ -13,6 +13,11 @@ package wenyu.learning.Arrays;
  *    
  *   Solution2: O(n)
  *    1. to see maxDiff_solution2
+ *    Logic:
+ *    In this method, instead of taking difference of the picked element with every other element, 
+ *    we take the difference with the minimum element found so far. So we need to keep track of 2 things:
+ *    1) Maximum difference found so far (max_diff).
+ *    2) Minimum number visited so far (min_element).
  */
 public class MaxDiffInArraySequence {
 
