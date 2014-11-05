@@ -1,5 +1,6 @@
 package wenyu.learning.Arrays;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import wenyu.learning.Arrays.ArrayUtils;
@@ -31,8 +32,8 @@ import wenyu.learning.Arrays.ArrayUtils;
 
 public class RotatedArraySearch {
 	public static final int runtime = 1;
-	private static final int ArrayLen = 1000;
-	private static final int MaxItem = Integer.MAX_VALUE;
+	private static final int ArrayLen = 10;
+	private static final int MaxItem = 100;
 
 	private static int[] generateRotatedArray() {
 		
@@ -50,6 +51,53 @@ public class RotatedArraySearch {
 		for(int j=0;i<tmpArr.length;i++,j++) {
 			tmpArr[i] = tmp[j];
 		}
+		return tmpArr;
+	}
+	
+	private static int[] generateRotatedArrayWithoutAuxSpace() {
+		/*
+		 * Logic:
+		 * 	1. reverse whole array
+		 * 	2. reverse first part of array before rotateIdx
+		 *  3. reverse second part of array after rotateIdx
+		 */
+		int[] tmpArr = ArrayUtils.generateSortedIntegerArray(ArrayLen, MaxItem);
+		int rotateIdx = new Random().nextInt(ArrayLen - 1);		
+		
+		// Step 1: reverse whole array
+		int start = 0;
+		int end = tmpArr.length-1;
+		while(start<end) {
+			int tmp = tmpArr[start];
+			tmpArr[start] = tmpArr[end];
+			tmpArr[end] = tmp;
+			start++;
+			end--;
+		}
+		
+		// Step 2: reverse first part of array
+		start = 0;
+		end = rotateIdx-1;
+		while(start < end) {
+			int tmp = tmpArr[start];
+			tmpArr[start] = tmpArr[end];
+			tmpArr[end] = tmp;
+			start++;
+			end--;
+		}
+		
+		// Step 3: reverse second part of array
+		start = rotateIdx;
+		end = tmpArr.length-1;
+		while(start < end) {
+			int tmp = tmpArr[start];
+			tmpArr[start] = tmpArr[end];
+			tmpArr[end] = tmp;
+			start++;
+			end--;
+		}
+		
+		
 		return tmpArr;
 	}
 	
@@ -148,8 +196,9 @@ public class RotatedArraySearch {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		int[] array = generateRotatedArray();
-
+		//int[] array = generateRotatedArray();
+		int[] array = generateRotatedArrayWithoutAuxSpace();
+		
 		sequentialSearch(array);
 		System.out.println();
 		binarySearch(array);
