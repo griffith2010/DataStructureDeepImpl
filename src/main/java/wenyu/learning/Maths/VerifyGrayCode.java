@@ -18,6 +18,20 @@ public class VerifyGrayCode {
 		return result;
 	}
 	
+//	public static int binaryToGray(int num)
+//	{
+//		return (num >> 1) ^ num;
+//	}
+	 
+//	public static int grayToBinary(int num)
+//	{
+//	    int mask;
+//	    for (mask = num >> 1; mask != 0; mask = mask >> 1) {
+//	        num = num ^ mask;
+//	    }
+//	    return num;
+//	}
+	
 	public static void main(String[] args) {
 		long num1 = 1l;
 		long num2 = 10l;
@@ -27,6 +41,5 @@ public class VerifyGrayCode {
 		} else {
 			System.out.println(num1 + " and " + num2 + " cannot be consecutive in gray code.");
 		}
-				
 	}
 }
