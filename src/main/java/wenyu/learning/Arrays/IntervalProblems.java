@@ -1,8 +1,13 @@
 package wenyu.learning.Arrays;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Comparator;
+
+/*
+ * Problem 1: You have N pairs of intervals, say integers. To find if has overlapping
+ * Problem 2: Given a set of time intervals in any order, merge all overlapping intervals into one and output 
+ * 			  the result which should have only mutually exclusive intervals.
+ */
 
 class Interval {
 	int start;
@@ -18,14 +23,13 @@ class Interval {
 	}
 }
 
-public class IntervalProblems {
+class HasOverlap {
+	/*
+	 * Logic: O(nlogn)
+	 * 	1. sort interval array according to the start value. O(nlogn)
+	 *  2. scan array to see if its start smaller than maxEnd. O(n)
+	 */
 	public static boolean ifHasOverlap(Interval[] intervals) {
-		/*
-		 * You have N pairs of intervals, say integers. To find if has overlapping
-		 * Logic: O(nlogn)
-		 * 	1. sort interval array according to the start value. O(nlogn)
-		 *  2. scan array to see if its start smaller than maxEnd. O(n)
-		 */
 		Interval[] tmpIntervals = intervals.clone();
 		Arrays.sort(tmpIntervals, new Comparator<Interval>() {
 			public int compare(Interval o1, Interval o2) {
@@ -48,14 +52,11 @@ public class IntervalProblems {
 		}
 		return false;
 	}
-	
+}
+
+class MergeInterval {
 	public static Interval[] mergeInterval(Interval[] intervals) {
 		/*
-		 * Given a set of time intervals in any order, merge all overlapping 
-		 * intervals into one and output the result which should have only 
-		 * mutually exclusive intervals. Let the intervals be represented as 
-		 * pairs of integers for simplicity. 
-		 * 
 		 * Logic:
 		 * 	1. Sort the intervals based on increasing order of starting time.
 		 *  2. Push the first interval on to a stack.
@@ -97,16 +98,18 @@ public class IntervalProblems {
 		}
 		return result;
 	}
-	
+}
+
+public class IntervalProblems {
 	public static void main(String[] args) {
 		Interval[] intervals = {new Interval(1,2),new Interval(3,5),new Interval(6,10),new Interval(10,12),new Interval(8,9)};
-		if(ifHasOverlap(intervals)) {
+		if(HasOverlap.ifHasOverlap(intervals)) {
 			System.out.println("Find overlapping...");
 		} else {
 			System.out.println("No overlapping...");
 		}
 		
-		mergeInterval(intervals);
+		MergeInterval.mergeInterval(intervals);
 	}
 
 }

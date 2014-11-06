@@ -3,7 +3,7 @@ package wenyu.learning.BigNumbers;
 import java.util.Arrays;
 
 /*
- * Advanced logic of big number subtracting
+ * Advanced logic of big number subtracting with less memory cost
  * Logic:
  * 	1. For integer: biggest positive number is 2^31 (10 digits, but first one is smaller than 2)
  * 	2. Big number can be expressed as [(9digits number), (9digits number), ...]

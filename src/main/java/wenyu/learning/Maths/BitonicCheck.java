@@ -5,6 +5,7 @@ package wenyu.learning.Maths;
  * 2. any rotation of a bitonic sequence is a bitonic sequence, or if you prefer, one of the subsequences can wrap 
  *    around the end of the bitonic sequence. 
  * 3. a sorted sequence is itself a bitonic sequence: one of the subsequences is empty.
+ * For example: [1,2,35,6,7,8,6,5,3,1]
  * 
  * Logic:
  * Obviously if the direction changes more than 

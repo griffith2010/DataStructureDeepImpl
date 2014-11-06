@@ -7,7 +7,7 @@ import java.util.Stack;
  * next higher number on its right side , which is nearer.
  * (if not present than keep it as it is.)
  * for e.g. input – > 3 4 6 1
- *          output->4 6 6 1
+ *          output -> 4 6 6 1
  *          
  * Solution1: O(n^2) or O(nlogn) with binary search for bigger index
  * Solution2: O(n) with O(n) space. Using stack

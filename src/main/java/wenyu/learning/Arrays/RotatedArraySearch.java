@@ -1,9 +1,6 @@
 package wenyu.learning.Arrays;
 
-import java.util.Arrays;
 import java.util.Random;
-
-import wenyu.learning.Arrays.ArrayUtils;
 
 /*
  * Find the rotate count of a sorted array
@@ -37,7 +34,7 @@ public class RotatedArraySearch {
 
 	private static int[] generateRotatedArray() {
 		
-		int[] tmpArr = ArrayUtils.generateSortedIntegerArray(ArrayLen, MaxItem);
+		int[] tmpArr = UtilsForArray.generateSortedIntegerArray(ArrayLen, MaxItem);
 		int rotateIdx = new Random().nextInt(ArrayLen - 1);		
 		
 		int[] tmp = new int[rotateIdx+1];
@@ -61,7 +58,7 @@ public class RotatedArraySearch {
 		 * 	2. reverse first part of array before rotateIdx
 		 *  3. reverse second part of array after rotateIdx
 		 */
-		int[] tmpArr = ArrayUtils.generateSortedIntegerArray(ArrayLen, MaxItem);
+		int[] tmpArr = UtilsForArray.generateSortedIntegerArray(ArrayLen, MaxItem);
 		int rotateIdx = new Random().nextInt(ArrayLen - 1);		
 		
 		// Step 1: reverse whole array

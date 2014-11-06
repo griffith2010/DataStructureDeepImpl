@@ -4,9 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /*
- * You are given pairs of numbers. 
- * In a pair the first number is smaller 
- * with respect to the second number. 
+ * You are given pairs of numbers. In a pair the first number is smaller to the second number. 
  * Suppose you have two sets (a, b) and (c, d), 
  * the second set can follow the first set if b<c.
  * So you can form a long chain in the similar 
@@ -14,7 +12,7 @@ import java.util.Comparator;
  * Find the longest chain which can be formed.
  * 
  * Logic:
- * 	1) Sort the pairs according to their second element --> O(nlgn)  
+ * 	1) Sort the pairs according to their second element --> O(nlogn)  
  *  2) Select the first pair from the sorted array and print it. --> O(1) 
  *  3) Do following for remaining pairs in the sorted array. --> O(n) 
  */

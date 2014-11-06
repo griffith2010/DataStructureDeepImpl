@@ -2,7 +2,7 @@ package wenyu.learning.BinarySearch;
 
 import java.util.Random;
 
-import wenyu.learning.Arrays.ArrayUtils;
+import wenyu.learning.Arrays.UtilsForArray;
 
 /*
  * Find the turning index of a array
@@ -23,7 +23,7 @@ public class TurningArraySearch extends ParentClassBenchMark {
 	private static final int MaxItem = 1000;
 
 	private static int[] generateTunningArray() {
-		int[] tmpArr = ArrayUtils.generateSortedIntegerArray(ArrayLen, MaxItem);
+		int[] tmpArr = UtilsForArray.generateSortedIntegerArray(ArrayLen, MaxItem);
 		int turningIdx = new Random().nextInt(ArrayLen - 1);		
 		
 		int start = 0;

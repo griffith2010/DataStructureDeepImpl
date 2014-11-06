@@ -32,7 +32,7 @@ public class SortByAnotherArr {
 	}
 	
 	public static void main(String[] args) {
-		int[] arr = ArrayUtils.generateRandomIntegerArray(9, 10);
+		int[] arr = UtilsForArray.generateRandomIntegerArray(9, 10);
 		Integer[] arrInteger = new Integer[arr.length];
 		for(int i=0; i<arr.length; i++) {
 			arrInteger[i] = arr[i];

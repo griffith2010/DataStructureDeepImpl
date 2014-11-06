@@ -1,7 +1,7 @@
 package wenyu.learning.Arrays;
 
 /*
- * Find the bigest sum of the sub-array in given array
+ * Find the biggest sum of the sub-array in given array
  * Logic:
  * 	1. scan array one by one
  * 	2. if current sum is less than 0, reset sum to 0. Else, add this item to sum

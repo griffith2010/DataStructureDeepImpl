@@ -1,6 +1,6 @@
 package wenyu.learning.Strings;
 
-/**
+/*
  * How do you implement a function to match regular expressions with ‘.’ and ‘*’
  * in patterns? For example, the string “aaa” matches the pattern “a.a” and the
  * pattern “ab*ac*a”. However, it does not match the pattern “aa.a” nor “ab*a”.

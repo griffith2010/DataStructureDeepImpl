@@ -2,7 +2,7 @@ package wenyu.learning.BinarySearch;
 
 import java.util.Random;
 
-import wenyu.learning.Arrays.ArrayUtils;
+import wenyu.learning.Arrays.UtilsForArray;
 
 public class BasicBinarySearch {
 	
@@ -72,8 +72,8 @@ public class BasicBinarySearch {
 	public static void main(String[] args) {
 		int count = 10;
 		while(count-- > 0) {
-			int[] array = ArrayUtils.generateSortedIntegerArray(10, 1000);
-			ArrayUtils.printArray(array);
+			int[] array = UtilsForArray.generateSortedIntegerArray(10, 1000);
+			UtilsForArray.printArray(array);
 			int k = new Random().nextInt(10-1);
 			System.out.println("Trying to find " + array[k] + ". It's index is " + k);
 			

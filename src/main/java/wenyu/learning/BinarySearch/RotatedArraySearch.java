@@ -2,7 +2,7 @@ package wenyu.learning.BinarySearch;
 
 import java.util.Random;
 
-import wenyu.learning.Arrays.ArrayUtils;
+import wenyu.learning.Arrays.UtilsForArray;
 
 /*
  * Find the rotate count of a sorted array
@@ -17,8 +17,10 @@ import wenyu.learning.Arrays.ArrayUtils;
  * 		2. If array[mid]>=array[P1], the middle number is in the first 
  * 		   increasingly sorted sub-array. then it moves P1 to the middle
  * 		3. if array[mid]<=array[P2], the middle number is in the second sub-array
- * 		   then, so it moves P2 to the middle-1.
- * 		4. It stops searching when P1 points to the previous item of the point of P2.
+ * 		   then, so it moves P2 to the middle.
+ * 		4. It stops searching when P1 points to the last number of 
+ *         the first sub-array and P2 points to the first number of 
+ *         the second sub-array, which is also the minimum of the array.
  *      5. Special case: the algorithm cannot determine if the middle 
  *                       element belongs to the first or second subarray 
  *                       when the middle element and the two numbers pointed 
@@ -27,14 +29,14 @@ import wenyu.learning.Arrays.ArrayUtils;
  *                       in such a scenario.
  */
 
-public class RotatedArraySearch extends ParentClassBenchMark {
+public class RotatedArraySearch {
 	public static final int runtime = 1;
-	private static final int ArrayLen = 1000;
-	private static final int MaxItem = Integer.MAX_VALUE;
+	private static final int ArrayLen = 10;
+	private static final int MaxItem = 100;
 
 	private static int[] generateRotatedArray() {
 		
-		int[] tmpArr = ArrayUtils.generateSortedIntegerArray(ArrayLen, MaxItem);
+		int[] tmpArr = UtilsForArray.generateSortedIntegerArray(ArrayLen, MaxItem);
 		int rotateIdx = new Random().nextInt(ArrayLen - 1);		
 		
 		int[] tmp = new int[rotateIdx+1];
@@ -48,6 +50,53 @@ public class RotatedArraySearch extends ParentClassBenchMark {
 		for(int j=0;i<tmpArr.length;i++,j++) {
 			tmpArr[i] = tmp[j];
 		}
+		return tmpArr;
+	}
+	
+	private static int[] generateRotatedArrayWithoutAuxSpace() {
+		/*
+		 * Logic:
+		 * 	1. reverse whole array
+		 * 	2. reverse first part of array before rotateIdx
+		 *  3. reverse second part of array after rotateIdx
+		 */
+		int[] tmpArr = UtilsForArray.generateSortedIntegerArray(ArrayLen, MaxItem);
+		int rotateIdx = new Random().nextInt(ArrayLen - 1);		
+		
+		// Step 1: reverse whole array
+		int start = 0;
+		int end = tmpArr.length-1;
+		while(start<end) {
+			int tmp = tmpArr[start];
+			tmpArr[start] = tmpArr[end];
+			tmpArr[end] = tmp;
+			start++;
+			end--;
+		}
+		
+		// Step 2: reverse first part of array
+		start = 0;
+		end = rotateIdx-1;
+		while(start < end) {
+			int tmp = tmpArr[start];
+			tmpArr[start] = tmpArr[end];
+			tmpArr[end] = tmp;
+			start++;
+			end--;
+		}
+		
+		// Step 3: reverse second part of array
+		start = rotateIdx;
+		end = tmpArr.length-1;
+		while(start < end) {
+			int tmp = tmpArr[start];
+			tmpArr[start] = tmpArr[end];
+			tmpArr[end] = tmp;
+			start++;
+			end--;
+		}
+		
+		
 		return tmpArr;
 	}
 	
@@ -67,8 +116,16 @@ public class RotatedArraySearch extends ParentClassBenchMark {
 		int end = array.length-1;
 		int mid;
 		
-		while(start < end-1) {
-			mid = start+ (end-start)/2;
+		while(start<=end) {
+			if((end-start)==1 && array[start]>=array[end]) {
+				System.out.println("Find such value. Index is " + start + ".");
+				return start;
+			} else if(array[start]<array[end]) {
+				System.out.println("No such value in the array.");
+				return -1;
+			}
+			
+			mid = (start+end)/2;
 			
 			/**
 			 * Remember this case!!!
@@ -92,31 +149,13 @@ public class RotatedArraySearch extends ParentClassBenchMark {
 			if(array[mid]>=array[start]) {
 				start = mid;
 			} else if(array[mid]<=array[end]) {
-				end = mid-1;
+				end = mid;
+			} else {
+				start = mid;
 			}
 		}
-		
-		if(start==end) {
-			if(start == array.length-1) {
-				System.out.println("No such value in the array.");
-				return -1;
-			} else {
-				System.out.println("Find such value. Index is " + start + ".");
-				return -1;
-			}
-		} else if(array[start] <= array[end]) {
-			if(end == array.length-1) {
-				System.out.println("No such value in the array.");
-				return -1;
-			} else {
-				System.out.println("Find such value. Index is " + end + ".");
-				return -1;
-			}
-		} else {
-			System.out.println("Find such value. Index is " + start + ".");
-			return -1;
-		}
-		
+		System.out.println("No such value in the array.");
+		return -1;
 	}
 	
 	public static void findItemInRotatedSortedArray(int[] array, int k) {
@@ -156,13 +195,14 @@ public class RotatedArraySearch extends ParentClassBenchMark {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		int[] array = generateRotatedArray();
-
-		demoEntry(new RotatedArraySearch(), runtime, RotatedArraySearch.class.getMethod("binarySearch", int[].class), array);
-		System.out.println();
-		demoEntry(new RotatedArraySearch(), runtime, RotatedArraySearch.class.getMethod("sequentialSearch", int[].class), array);
+		//int[] array = generateRotatedArray();
+		int[] array = generateRotatedArrayWithoutAuxSpace();
 		
-		//findItemInRotatedSortedArray(array, );
+		sequentialSearch(array);
+		System.out.println();
+		binarySearch(array);
+		
+		findItemInRotatedSortedArray(array, 80);
 	}
 
 

@@ -1,9 +1,11 @@
 package wenyu.learning.Arrays;
 
 /*
- * An array contains n numbers ranging from 0 to n-2. 
- * There is exactly one number duplicated in the array. 
- * How do you find the duplicated number?
+ * An array contains n numbers ranging from 0 to n-2. There is exactly one number duplicated in the array. Find duplicate.
+ * For example: n=9, arr=[0,1,2,3,3,4,5,6,7], find 3
+ * Solution 1: Sum of 0 to n-2
+ * Solution 2: Using extra space
+ * Solution 3: XOR 0 to n-2 arr ^ [0,1,2,3,4,5,6,7] ==> last result is duplicate
  */
 
 public class N2Solutions {
@@ -41,18 +43,4 @@ public class N2Solutions {
 		}
 		System.out.println("Duplicated number is " + dupNum);
 	}
-	
-//	@Override
-//	public void doExecut() {
-//		//solution1();
-//		//solution2();
-//		solution3();
-//	}
-//	
-//	public static void main(String[] args) {
-//		array = RandomArrayGen.getArray(RandomArrayGen.N2);
-//		arraySize = array.length;
-//		demoEntry(N2Solutions.class, runtime);
-//	}
-
 }

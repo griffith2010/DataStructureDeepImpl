@@ -2,7 +2,7 @@ package wenyu.learning.BinarySearch;
 
 import java.util.Random;
 
-import wenyu.learning.Arrays.ArrayUtils;
+import wenyu.learning.Arrays.UtilsForArray;
 
 public class SearchLower extends ParentClassBenchMark {
 	public static final int runtime = 1;
@@ -56,8 +56,8 @@ public class SearchLower extends ParentClassBenchMark {
 	public static void main(String[] args) throws Exception {
 		int count = 10;
 		while(count-- > 0) {
-			int[] array = ArrayUtils.generateSortedIntegerArray(ArrayLen, MaxItem);
-			ArrayUtils.printArray(array);
+			int[] array = UtilsForArray.generateSortedIntegerArray(ArrayLen, MaxItem);
+			UtilsForArray.printArray(array);
 			int k = new Random().nextInt(MaxItem - 1);
 			System.out.println("k=" + k);
 	

@@ -49,7 +49,7 @@ public class LongestIncreaseSubsequence {
 	 * 		b) values in b means the increase order position(index) of current position's value in array.
 	 * 		   For example:
 	 * 				arr: {1,8,3,10,5,6}
-	 * 				b: {1,2,2,3,3,4}
+	 * 				aux: {1,2,2,3,3,4}
 	 * 				like 8: {1, 8}/like 3: {1,3}/like 6:{1,3,5,6}
 	 *		c) First step can also calculate the count of longest increase sub-sequence
 	 *  2. Second step:

@@ -118,8 +118,8 @@ public class MaxProductFromThreeElemsInArr {
 	}
 	
 	public static void main(String[] args) {
-		int[] arr = ArrayUtils.generateRandomIntegerArray(10, 10);
-		ArrayUtils.printArray(arr);
+		int[] arr = UtilsForArray.generateRandomIntegerArray(10, 10);
+		UtilsForArray.printArray(arr);
 		
 		int product = findUnsigned(arr);
 		System.out.println(product);

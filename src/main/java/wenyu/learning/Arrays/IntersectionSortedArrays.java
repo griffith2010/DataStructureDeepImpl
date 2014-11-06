@@ -1,5 +1,8 @@
 package wenyu.learning.Arrays;
 
+/*
+ * Find the intersection of two sorted array
+ */
 public class IntersectionSortedArrays {
 
 	public static void find_solution1(int[] numbers1, int[] numbers2) {
