@@ -11,7 +11,7 @@ package wenyu.learning.Tree.BinaryTree;
  */
 public class DistanceOfTwoNodes {
 	public static <E> int getDistance(BinaryTreeNode<E> root, BinaryTreeNode<E> child1, BinaryTreeNode<E> child2) throws Exception {
-		BinaryTreeNode<E> ancestor = LowestCommonAncestor.LCA(root, child1, child2);
+		BinaryTreeNode<E> ancestor = LCA_Solution1.LCA(root, child1, child2);
 		if(ancestor == null) {
 			throw new Exception("Didn't find common ancestor");
 		}
