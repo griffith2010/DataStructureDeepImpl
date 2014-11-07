@@ -1,6 +1,6 @@
 package wenyu.learning.Tree.BinaryTree;
 
-public class BSTDeserialization {
+public class DeserializeBST {
 	private static final Object NULL = null;
 	
 	public static <E> BinaryTreeNode<E> deserialPreOrder(E[] elements, int[] idx) {

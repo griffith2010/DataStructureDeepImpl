@@ -16,12 +16,12 @@ public class DistanceOfTwoNodes {
 			throw new Exception("Didn't find common ancestor");
 		}
 		
-		int distanceOfAncestor = NodeDepthCalculator.calculateDepth(root, ancestor);
-		int distanceOfChild1 = NodeDepthCalculator.calculateDepth(root, child1);
+		int distanceOfAncestor = DepthCalculator.calculateDepth(root, ancestor);
+		int distanceOfChild1 = DepthCalculator.calculateDepth(root, child1);
 		if(distanceOfChild1==-1) {
 			throw new Exception("Didn't find child1");
 		}
-		int distanceOfChild2 = NodeDepthCalculator.calculateDepth(root, child2);
+		int distanceOfChild2 = DepthCalculator.calculateDepth(root, child2);
 		if(distanceOfChild2==-1) {
 			throw new Exception("Didn't find child2");
 		}

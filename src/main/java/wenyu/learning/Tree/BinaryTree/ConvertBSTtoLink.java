@@ -1,6 +1,6 @@
 package wenyu.learning.Tree.BinaryTree;
 
-public class BinaryTreeTraversalToLink {
+public class ConvertBSTtoLink {
 	
 	public static <E> BinaryTreeNode<E> transfer_inorder(BinaryTreeNode<E> root) {
 		BinaryTreeNode<E> newRoot = new BinaryTreeNode<E>();

@@ -2,8 +2,12 @@ package wenyu.learning.Tree.BinaryTree;
 
 import java.util.Arrays;
 import java.util.Random;
+/*
+ * Problem 1: Verify if two trees are mirrored
+ * Problem 2: Generate mirrored tree from given tree
+ */
 
-public class MirroredTreeUtils {
+public class MirroredTreeProblems {
 	
 	public static <E> boolean verifyTwoTreesAreMirrored(BinaryTreeNode<E> node1, BinaryTreeNode<E> node2) {
 		if(node1==null && node2==null) {

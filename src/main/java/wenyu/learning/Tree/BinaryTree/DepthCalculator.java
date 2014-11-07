@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
 
-public class NodeDepthCalculator {
+public class DepthCalculator {
 	
 	private static void printDepths(Map<BinaryTreeNode, Integer> depths) {
 		

@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class BSTPrevNodeUtils {
+public class PrevNodeInBSTUtils {
 	
 	public static <E extends Comparable<E>> BinaryTreeNode<E> PrevPreOrderNode(BinaryTreeNode<E> root, BinaryTreeNode<E> currNode) {
 		if(root==null || currNode==null) {
