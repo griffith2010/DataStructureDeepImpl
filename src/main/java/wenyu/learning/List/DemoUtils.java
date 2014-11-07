@@ -20,6 +20,29 @@ public class DemoUtils {
 		}
 	}
 	
+	public static <T> void printCyclicList(MyListNode<T> list) {
+		if(list == null) {
+			System.out.println("Link: []");
+			return;
+		}
+		MyListNode<T> head = list;
+		
+		StringBuilder output = new StringBuilder("Link: [");
+		while(list!=null) {
+			output.append(list.getValue());
+			output.append(", ");
+			list = list.next;
+			if(list == head) {
+				break;
+			}
+		}
+		if(output.length()>7) {
+			System.out.println(output.substring(0, output.length()-2) + "]");
+		} else {
+			System.out.println(output.toString() + "]");
+		}
+	}
+	
 	public static <T> MyListNode<T> generateLinkedList(boolean ifDoubleLink, T ...items) {
 		if(items.length <= 0) {
 			return null;

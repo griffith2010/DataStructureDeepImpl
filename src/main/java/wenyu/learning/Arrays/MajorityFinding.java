@@ -91,7 +91,7 @@ public class MajorityFinding {
 	}
 
 	public static void findMajority_solution3(int[] numbers) {
-		// Using difination
+		// Using definition
 		// No need to alter the array
 		// O(n)
 		int result = numbers[0];
